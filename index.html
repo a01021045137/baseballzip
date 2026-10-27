@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>야구zip</title>
+
+    <style>
+
+        /* =========================
+           전체 기본 설정
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, "맑은 고딕", sans-serif;
+            background: linear-gradient(135deg, #e8f8f8, #e9efff);
+            min-height: 100vh;
+            color: #222;
+        }
+
+
+        /* =========================
+           로고
+        ========================= */
+
+        .logo {
+            position: absolute;
+            top: 45px;
+            left: 50px;
+
+            font-size: 42px;
+            font-weight: bold;
+            color: #101b2d;
+        }
+
+        .logo span {
+            color: #3478d4;
+        }
+
+
+        /* =========================
+           메인 웹페이지 박스
+        ========================= */
+
+        .container {
+            width: 86%;
+            max-width: 1250px;
+
+            margin: 145px auto 50px;
+
+            background-color: white;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08);
+
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           상단 메뉴
+        ========================= */
+
+        .nav {
+            height: 70px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 55px;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .nav a {
+            text-decoration: none;
+
+            color: #222;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            padding: 24px 5px 20px;
+
+            cursor: pointer;
+        }
+
+        .nav a:hover {
+            color: #3478d4;
+        }
+
+        .nav .active {
+            color: #3478d4;
+
+            border-bottom: 3px solid #3478d4;
+        }
+
+
+        /* =========================
+           메인 배너
+        ========================= */
+
+        .main-banner {
+
+            min-height: 500px;
+
+            padding: 65px 65px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7e8,
+                    #f7f3ea
+                );
+        }
+
+
+        /* 왼쪽 글 */
+
+        .main-text {
+            width: 50%;
+        }
+
+        .main-text h1 {
+            font-size: 38px;
+
+            line-height: 1.35;
+
+            margin-bottom: 25px;
+        }
+
+        .main-text h1 span {
+            color: #3478d4;
+        }
+
+        .main-text p {
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            color: #555;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* 시작 버튼 */
+
+        .start-button {
+            display: inline-block;
+
+            padding: 15px 30px;
+
+            background-color: #3478d4;
+
+            color: white;
+
+            border-radius: 10px;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            text-decoration: none;
+
+            box-shadow: 0 5px 10px rgba(52, 120, 212, 0.25);
+
+            transition: 0.2s;
+        }
+
+        .start-button:hover {
+            background-color: #2463b7;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           오른쪽 메인 일러스트
+        ========================= */
+
+        .main-image {
+            width: 43%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        /* 큰 야구 카드 */
+
+        .baseball-card {
+            width: 300px;
+            height: 270px;
+
+            background-color: white;
+
+            border: 3px solid #222;
+
+            border-radius: 25px;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            box-shadow: 8px 8px 0px rgba(52, 120, 212, 0.15);
+
+            transform: rotate(2deg);
+        }
+
+        .baseball {
+            font-size: 80px;
+
+            margin-bottom: 15px;
+        }
+
+        .baseball-card h2 {
+            font-size: 28px;
+
+            margin-bottom: 10px;
+        }
+
+        .baseball-card p {
+            color: #666;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           아래 기능 카드
+        ========================= */
+
+        .function-area {
+            padding: 35px 60px 55px;
+
+            background-color: #fff;
+        }
+
+        .function-title {
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+        .function-title h2 {
+            font-size: 24px;
+        }
+
+        .function-title p {
+            margin-top: 8px;
+
+            color: #777;
+        }
+
+
+        .function-list {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 20px;
+        }
+
+
+        /* 각각의 기능 */
+
+        .function-card {
+            width: 30%;
+
+            min-height: 170px;
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            border: 1px solid #eeeeee;
+
+            background-color: #fafafa;
+
+            transition: 0.2s;
+
+            cursor: pointer;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+
+        .function-card .icon {
+            font-size: 35px;
+
+            margin-bottom: 12px;
+        }
+
+        .function-card h3 {
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .function-card p {
+            color: #777;
+
+            line-height: 1.5;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           푸터
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 25px;
+
+            color: #888;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           화면 크기가 작아졌을 때
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .logo {
+                position: static;
+
+                text-align: center;
+
+                padding-top: 30px;
+            }
+
+            .container {
+                margin-top: 30px;
+
+                width: 95%;
+            }
+
+            .nav {
+                gap: 15px;
+
+                overflow-x: auto;
+            }
+
+            .nav a {
+                font-size: 14px;
+            }
+
+            .main-banner {
+                flex-direction: column;
+
+                text-align: center;
+
+                padding: 40px 25px;
+            }
+
+            .main-text {
+                width: 100%;
+            }
+
+            .main-image {
+                width: 100%;
+
+                margin-top: 40px;
+            }
+
+            .function-list {
+                flex-direction: column;
+            }
+
+            .function-card {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         로고
+    ========================= -->
+
+    <div class="logo">
+        야구<span>zip</span>
+    </div>
+
+
+    <!-- =========================
+         전체 웹페이지
+    ========================= -->
+
+    <div class="container">
+
+
+        <!-- 상단 메뉴 -->
+
+        <nav class="nav">
+
+            <a href="index.html" class="active">
+                홈
+            </a>
+
+            <a href="player.html">
+                선수 퀴즈
+            </a>
+
+            <a href="rule.html">
+                규칙 퀴즈
+            </a>
+
+            <a href="restaurant.html">
+                맛집 정보
+            </a>
+
+          
+
+        </nav>
+
+
+        <!-- =========================
+             메인 배너
+        ========================= -->
+
+        <section class="main-banner">
+
+
+            <!-- 왼쪽 -->
+
+            <div class="main-text">
+
+                <h1>
+                    당신의 야구 지식을<br>
+                    <span>재미있게 알아보세요!</span>
+                </h1>
+
+                <p>
+                    선수부터 야구 규칙, KBO 구단 맛집까지!<br>
+                    야구에 대한 다양한 정보를<br>
+                    야구zip에서 확인해보세요.
+                </p>
+
+                <a href="player.html" class="start-button">
+                    야구 알아보기 →
+                </a>
+
+            </div>
+
+
+            <!-- 오른쪽 -->
+
+            <div class="main-image">
+
+                <div class="baseball-card">
+
+                    <div class="baseball">
+                        ⚾
+                    </div>
+
+                    <h2>
+                        야구ZIP
+                    </h2>
+
+                    <p>
+                        야구를 쉽고 재미있게!
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================
+             주요 기능
+        ========================= -->
+
+        <section class="function-area">
+
+            <div class="function-title">
+
+                <h2>
+                    야구ZIP 주요 기능
+                </h2>
+
+                <p>
+                    원하는 기능을 선택해보세요.
+                </p>
+
+            </div>
+
+
+            <div class="function-list">
+
+
+                <!-- 선수 퀴즈 -->
+
+                <div
+                    class="function-card"
+                    onclick="location.href='player.html'"
+                >
+
+                    <div class="icon">
+                        ⚾
+                    </div>
+
+                    <h3>
+                        선수 퀴즈
+                    </h3>
+
+                    <p>
+                        다양한 야구 선수에 대한
+                        문제를 풀어보세요.
+                    </p>
+
+                </div>
+
+
+                <!-- 규칙 퀴즈 -->
+
+                <div
+                    class="function-card"
+                    onclick="location.href='rule.html'"
+                >
+
+                    <div class="icon">
+                        📖
+                    </div>
+
+                    <h3>
+                        규칙 퀴즈
+                    </h3>
+
+                    <p>
+                        야구의 기본 규칙을
+                        문제를 통해 알아보세요.
+                    </p>
+
+                </div>
+
+
+                <!-- 맛집 정보 -->
+
+                <div
+                    class="function-card"
+                    onclick="location.href='restaurant.html'"
+                >
+
+                    <div class="icon">
+                        🍴
+                    </div>
+
+                    <h3>
+                        맛집 정보
+                    </h3>
+
+                    <p>
+                        KBO 구단을 선택하고
+                        야구장 내·외 맛집을 확인하세요.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+    <!-- 푸터 -->
+
+    <footer>
+        야구ZIP © 2026
+    </footer>
+
+
+</body>
+</html>

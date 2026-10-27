@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>규칙 퀴즈 | 야구ZIP</title>
+<style>
+:root{--blue:#3478d4;--navy:#17263c;--cream:#fff8ec;--line:#e6eaf0;--muted:#67758a}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#e8f8f8,#e9efff);color:var(--navy);font-family:Arial,'맑은 고딕',sans-serif;min-height:100vh}.logo{max-width:1200px;margin:35px auto 20px;font-size:36px;font-weight:800}.logo span{color:var(--blue)}.container{max-width:1200px;width:92%;margin:0 auto 45px;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px #243e6020}.nav{display:flex;justify-content:center;gap:42px;border-bottom:1px solid var(--line);padding:22px 15px;flex-wrap:wrap}.nav a{text-decoration:none;color:#263247;font-size:16px;font-weight:700}.nav a.active,.nav a:hover{color:var(--blue)}.hero{background:linear-gradient(115deg,#fff7e8,#f3f8ff);padding:44px 6% 35px}.eyebrow{font-size:13px;letter-spacing:1.5px;color:var(--blue);font-weight:800}.hero h1{font-size:34px;margin:12px 0}.hero p{color:#536174;line-height:1.7;margin:0}.main{padding:32px 6% 55px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}.tab{border:1px solid #dce5f0;background:#f8faff;border-radius:14px;padding:18px 8px;font-size:16px;font-weight:700;color:#40536a;cursor:pointer}.tab.active{background:var(--blue);color:white;border-color:var(--blue)}.panel{display:none}.panel.active{display:block}.intro{color:var(--muted);line-height:1.7;margin:0 0 24px}.rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.rule-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:24px}.rule-card h3{margin:0 0 12px;font-size:19px}.rule-card p,.rule-card li{line-height:1.8;color:#4d5b70;font-size:15px}.rule-card ul{padding-left:20px;margin:0}.quiz-shell{max-width:790px;margin:auto}.progress-line{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:14px;margin-bottom:10px}.track{height:9px;background:#edf2f8;border-radius:20px;overflow:hidden;margin-bottom:28px}.track-fill{height:100%;background:var(--blue);width:2%;transition:width .2s}.quiz-card{border:1px solid var(--line);border-radius:22px;padding:30px;background:#fff;box-shadow:0 8px 28px #1b35530b}.quiz-card h2{font-size:22px;line-height:1.6;margin:0 0 25px}.choices{display:grid;gap:12px}.choice{display:flex;gap:12px;align-items:center;text-align:left;border:1px solid #d9e1eb;background:#fff;border-radius:12px;padding:17px 19px;cursor:pointer;font-size:16px;color:#27374d;line-height:1.5}.choice:hover:not(:disabled){border-color:#7aa9e6;background:#f7faff}.choice.selected{border:2px solid var(--blue);background:#eef5ff}.choice.correct{border:2px solid #29986a;background:#e9f8f0}.choice.wrong{border:2px solid #d95c67;background:#fff0f1}.choice:disabled{cursor:default}.letter{font-weight:800;color:var(--blue);min-width:22px}.actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:22px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:14px 24px;font-size:16px;font-weight:700;cursor:pointer}.primary{background:var(--blue);color:white}.primary:hover{background:#2463b7}.primary:disabled{opacity:.45;cursor:not-allowed}.secondary{background:#eef3f9;color:#263d59}.feedback{margin-top:24px;padding:22px;border-radius:14px;background:#f2f7ff;border-left:4px solid var(--blue);line-height:1.8;display:none}.feedback.show{display:block}.feedback strong{font-size:18px}.feedback .answer{font-weight:700;margin:8px 0}.feedback .reason{color:#4c5b70;margin:8px 0 0}.option-details{margin-top:18px;border-top:1px solid #dbe5f2;padding-top:14px}.option-details p{margin:8px 0;color:#4c5b70;font-size:14px}.finish{text-align:center;padding:45px 10px}.finish h2{font-size:27px}.finish p{color:var(--muted);line-height:1.7}.summary-stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:24px 0}.stat{border:1px solid var(--line);background:#f8faff;border-radius:14px;padding:15px 22px;min-width:125px}.stat b{display:block;font-size:27px;color:var(--blue)}.review-list{text-align:left;max-width:730px;margin:28px auto}.review-item{padding:17px 19px;border:1px solid var(--line);border-radius:13px;margin-bottom:12px}.review-item p{margin:6px 0}.review-item .ok{color:#23865c}.review-item .bad{color:#c24755}footer{text-align:center;color:#8793a3;padding:0 0 32px;font-size:13px}@media(max-width:700px){.logo{width:92%;font-size:30px}.nav{gap:15px}.nav a{font-size:13px}.hero{padding:32px 6%}.hero h1{font-size:28px}.main{padding:22px 5% 35px}.tabs{gap:7px}.tab{font-size:13px;padding:14px 5px}.rules-grid{grid-template-columns:1fr}.quiz-card{padding:20px}.quiz-card h2{font-size:19px}.choice{font-size:14px;padding:14px}}
+</style>
+</head>
+<body>
+<div class="logo">야구<span>zip</span></div>
+<div class="container">
+<nav class="nav"><a href="야구zip.html">홈</a><a href="player.html">선수 퀴즈</a><a class="active" href="rule.html">규칙 퀴즈</a><a href="restaurant.html">맛집 정보</a></nav>
+<header class="hero"><div class="eyebrow">BASEBALL GUIDE & QUIZ</div><h1>야구 규칙 알아보기 ⚾</h1><p>야구 기본 규칙부터 용어 퀴즈와 OX 퀴즈까지!<br>차근차근 익히고 직접 문제를 풀어보세요.</p></header>
+<main class="main">
+<div class="tabs" role="tablist" aria-label="규칙 퀴즈 메뉴"><button class="tab active" data-tab="basics" role="tab" aria-selected="true">야구 기본 규칙</button><button class="tab" data-tab="terms" role="tab" aria-selected="false">야구 용어 퀴즈</button><button class="tab" data-tab="ox" role="tab" aria-selected="false">야구 룰 OX 퀴즈</button></div>
+<section class="panel active" id="basics"><p class="intro">처음 야구를 보는 사람도 이해할 수 있도록 핵심 규칙을 간단하게 정리했어요.</p>
+<div class="rules-grid">
+<article class="rule-card"><h3>⚾ 1. 경기 진행</h3><p>야구는 두 팀이 공격과 수비를 번갈아 하는 경기예요. 일반적인 정규 경기는 9이닝이며, 한 이닝은 초와 말로 나뉘어요. 수비 팀이 아웃 3개를 잡으면 공수가 바뀝니다.</p></article>
+<article class="rule-card"><h3>🏟️ 2. 득점 방법</h3><p>타자나 주자가 1루 → 2루 → 3루 → 홈을 순서대로 돌아 홈플레이트를 밟으면 득점할 수 있어요. 득점은 경기 상황과 규칙에 따라 인정됩니다.</p></article>
+<article class="rule-card"><h3>🎯 3. 볼과 스트라이크</h3><p>스트라이크존을 통과하거나 타자가 헛스윙하면 스트라이크가 될 수 있어요. 존 밖 공에 스윙하지 않으면 보통 볼이에요. 스트라이크 3개면 삼진, 볼 4개면 볼넷입니다. 낫아웃 등 예외가 있어요.</p></article>
+<article class="rule-card"><h3>🧤 4. 아웃되는 경우</h3><ul><li>스트라이크 3개로 삼진</li><li>뜬공을 땅에 닿기 전에 수비수가 정규 포구</li><li>타자주자보다 수비수가 공을 가진 채 1루를 먼저 밟음</li><li>필요한 상황에서 주자를 태그하거나 포스 아웃 처리</li></ul></article>
+<article class="rule-card"><h3>🏃 5. 안타와 주루</h3><p>타구로 안전하게 출루하면 안타가 기록될 수 있어요. 단타·2루타·3루타·홈런이 있고, 주자는 상황에 따라 도루를 시도할 수도 있어요.</p></article>
+<article class="rule-card"><h3>📋 6. 알아두면 좋은 규칙</h3><p>파울은 보통 스트라이크로 계산되지만 2스트라이크 이후 일반 파울은 삼진이 되지 않아요. 다만 번트 파울은 예외예요. 주자 상황에 따라 인필드 플라이, 보크 등의 규칙도 적용됩니다.</p></article>
+</div></section>
+<section class="panel" id="terms"><p class="intro">야구 용어를 4지선다 퀴즈로 알아보세요.</p><div class="quiz-shell" id="terms-app"></div></section>
+<section class="panel" id="ox"><p class="intro">야구 규칙을 OX 퀴즈로 알아보세요.</p><div class="quiz-shell" id="ox-app"></div></section>
+</main></div><footer>야구ZIP © 2026</footer>
+<script>
+const termQuestions = [
+  {
+    "question": "다음 중 ‘스트라이크’의 의미로 알맞은 것은?",
+    "options": [
+      "타자가 정상적으로 친 공",
+      "스트라이크존을 통과하거나 타자가 헛스윙한 투구",
+      "주자가 다음 루로 진루한 상황",
+      "수비수가 공을 놓친 상황"
+    ],
+    "answer": 1,
+    "explanation": "스트라이크는 존을 통과한 투구나 헛스윙 등으로 선언됩니다.",
+    "optionExplanations": [
+      "타자가 친 공이 모두 안타는 아닙니다. 수비에 잡히거나 아웃될 수도 있습니다.",
+      "스트라이크존을 통과한 투구나 타자의 헛스윙 등은 스트라이크로 판정됩니다.",
+      "주자가 다음 루로 이동하는 것은 진루입니다.",
+      "수비수가 처리할 수 있는 공을 잘못 놓치면 실책으로 기록될 수 있습니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘볼’의 의미로 알맞은 것은?",
+    "options": [
+      "타자가 친 파울 타구",
+      "타자가 헛스윙한 투구",
+      "수비수가 잡은 뜬공",
+      "스트라이크존을 벗어나 타자가 스윙하지 않은 투구"
+    ],
+    "answer": 3,
+    "explanation": "존을 벗어난 공에 타자가 스윙하지 않으면 보통 볼입니다.",
+    "optionExplanations": [
+      "타구가 파울 지역에 떨어지거나 규정상 파울이면 파울입니다.",
+      "타자가 투구에 헛스윙하면 스트라이크가 선언됩니다.",
+      "수비수가 뜬공을 잡으면 보통 플라이 아웃입니다.",
+      "스트라이크존 밖의 공을 타자가 스윙하지 않으면 일반적으로 볼입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘삼진’의 의미로 알맞은 것은?",
+    "options": [
+      "주자가 세 루를 지나간 상황",
+      "타자가 세 번 안타를 친 상황",
+      "볼이 네 개가 된 상황",
+      "세 번째 스트라이크가 선언되어 삼진이 기록되는 상황"
+    ],
+    "answer": 3,
+    "explanation": "삼진은 타자에게 세 번째 스트라이크가 선언된 기록입니다. 낫아웃 상황에서는 삼진이 기록되어도 타자가 출루할 수 있습니다.",
+    "optionExplanations": [
+      "주자가 세 루를 지나는 것은 주루 상황이지 삼진이 아닙니다.",
+      "타자가 안타를 세 번 치면 3안타를 기록한 것입니다.",
+      "볼 네 개가 되면 볼넷으로 1루를 얻습니다.",
+      "세 번째 스트라이크가 선언되면 삼진이 기록됩니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘볼넷’의 의미로 알맞은 것은?",
+    "options": [
+      "투수가 타자를 맞힌 상황",
+      "타자가 네 번 헛스윙한 상황",
+      "타자가 홈런을 친 상황",
+      "볼 네 개로 1루를 얻는 상황"
+    ],
+    "answer": 3,
+    "explanation": "볼 네 개가 선언되면 타자는 1루로 나갑니다.",
+    "optionExplanations": [
+      "투구가 타자 몸에 맞으면 사구가 될 수 있습니다.",
+      "헛스윙 세 번으로 스트라이크 세 개가 되면 삼진입니다.",
+      "타자가 타구로 모든 루를 돌아 득점하면 홈런입니다.",
+      "볼 네 개가 선언되면 볼넷으로 1루에 나갑니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘사구’의 의미로 알맞은 것은?",
+    "options": [
+      "타자가 공에 맞아 출루하는 상황",
+      "투수가 고의로 볼넷을 주는 상황",
+      "타자가 파울을 친 상황",
+      "수비수가 송구를 놓친 상황"
+    ],
+    "answer": 0,
+    "explanation": "사구는 투구가 타자 몸에 맞아 출루하는 경우입니다. 상황에 따라 예외가 있습니다.",
+    "optionExplanations": [
+      "투구가 타자의 몸에 맞아 규정에 따라 출루하면 사구입니다.",
+      "투수가 의도적으로 볼넷을 주는 것은 고의4구입니다.",
+      "타자가 파울 지역으로 타구를 보내면 파울입니다.",
+      "수비수가 송구를 놓쳐 주자가 진루하면 실책 등이 기록될 수 있습니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘안타’의 의미로 알맞은 것은?",
+    "options": [
+      "수비 실책으로만 출루한 기록",
+      "볼넷으로 출루한 기록",
+      "몸에 맞는 공으로 출루한 기록",
+      "타구로 규정에 따라 안전하게 출루해 기록되는 안타"
+    ],
+    "answer": 3,
+    "explanation": "안타는 타구로 안전하게 출루하고 기록원이 안타로 판정한 경우입니다. 실책이나 야수 선택으로 출루하면 안타가 아닐 수 있습니다.",
+    "optionExplanations": [
+      "수비 실책으로 출루한 경우는 일반적으로 안타로 기록되지 않습니다.",
+      "볼넷으로 1루에 나가는 것은 안타가 아닙니다.",
+      "사구로 출루하는 것은 안타가 아닙니다.",
+      "타구로 안전하게 출루해 기록원이 안타로 판정하면 안타입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘단타’의 의미로 알맞은 것은?",
+    "options": [
+      "3루까지 간 타격",
+      "홈까지 들어온 타격",
+      "타격으로 1루타를 기록한 것",
+      "2루까지 간 타격"
+    ],
+    "answer": 2,
+    "explanation": "단타는 1루타를 뜻합니다.",
+    "optionExplanations": [
+      "타격으로 3루까지 가면 3루타가 될 수 있습니다.",
+      "타구로 모든 루를 돌아 득점하면 홈런입니다.",
+      "타격 결과 1루타를 기록하면 단타입니다.",
+      "타격으로 2루까지 가면 2루타가 될 수 있습니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘2루타’의 의미로 알맞은 것은?",
+    "options": [
+      "볼넷으로 출루한 것",
+      "타격으로 1루까지만 간 것",
+      "타격으로 2루까지 안전하게 간 것",
+      "도루로 2루에 간 것"
+    ],
+    "answer": 2,
+    "explanation": "2루타는 타격 결과 타자가 2루까지 안전하게 진루한 기록입니다.",
+    "optionExplanations": [
+      "볼넷은 볼 네 개로 1루에 나가는 것입니다.",
+      "타격 결과 1루까지 안전하게 가면 1루타가 될 수 있습니다.",
+      "타격 결과 2루까지 안전하게 가면 2루타입니다.",
+      "도루로 2루에 간 것은 2루타가 아니라 도루입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘3루타’의 의미로 알맞은 것은?",
+    "options": [
+      "타격으로 3루까지 안전하게 간 것",
+      "세 명의 타자가 연속 안타를 친 것",
+      "세 번 도루한 것",
+      "3회에 나온 안타"
+    ],
+    "answer": 0,
+    "explanation": "3루타는 타격 결과 타자가 3루까지 안전하게 진루한 기록입니다.",
+    "optionExplanations": [
+      "타격 결과 3루까지 안전하게 가면 3루타입니다.",
+      "세 타자가 연속으로 안타를 치면 연속 안타입니다.",
+      "주자가 세 차례 도루에 성공하면 도루 3개를 기록합니다.",
+      "3회에 친 안타는 이닝을 나타내며 3루타라는 뜻은 아닙니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘홈런’의 의미로 알맞은 것은?",
+    "options": [
+      "타자가 1루까지 진루하는 것",
+      "타자가 2루까지 진루하는 것",
+      "주자가 도루하는 것",
+      "타구로 타자가 모든 루를 돌아 득점하는 것"
+    ],
+    "answer": 3,
+    "explanation": "홈런은 타자가 한 번의 타격으로 모든 루를 돌아 득점하는 기록입니다.",
+    "optionExplanations": [
+      "타격 결과 1루까지 가면 1루타가 될 수 있습니다.",
+      "타격 결과 2루까지 가면 2루타가 될 수 있습니다.",
+      "주자가 투구 상황 등을 이용해 다음 루로 가면 도루입니다.",
+      "타자가 타구로 모든 루를 돌아 득점하면 홈런입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘만루 홈런’의 의미로 알맞은 것은?",
+    "options": [
+      "주자 두 명이 있는 홈런",
+      "세 루에 주자가 모두 있을 때의 홈런",
+      "주자가 없는 상황의 홈런",
+      "주자 한 명이 있는 홈런"
+    ],
+    "answer": 1,
+    "explanation": "만루 홈런은 주자 3명과 타자를 합쳐 4점이 들어오는 홈런입니다.",
+    "optionExplanations": [
+      "주자 두 명이 있을 때 친 홈런은 3점 홈런입니다.",
+      "1·2·3루에 주자가 모두 있을 때의 홈런은 만루 홈런입니다.",
+      "주자가 없을 때 친 홈런은 솔로 홈런입니다.",
+      "주자 한 명이 있을 때 친 홈런은 2점 홈런입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘타점’의 의미로 알맞은 것은?",
+    "options": [
+      "투수가 던진 공의 수",
+      "타자의 플레이로 팀 득점에 기여해 기록되는 수치",
+      "타자가 출루한 횟수",
+      "타자가 삼진당한 횟수"
+    ],
+    "answer": 1,
+    "explanation": "타점은 규정에 따라 타자의 플레이로 득점이 발생했을 때 부여됩니다.",
+    "optionExplanations": [
+      "투구 수는 투수가 던진 공의 개수입니다.",
+      "타점은 타자의 플레이로 득점이 발생했을 때 규정에 따라 기록됩니다.",
+      "출루 횟수는 타자가 루에 나간 횟수입니다.",
+      "삼진 횟수는 타자가 삼진당한 횟수입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘득점’의 의미로 알맞은 것은?",
+    "options": [
+      "주자가 홈을 밟아 점수를 올린 것",
+      "타자가 스트라이크를 얻은 것",
+      "수비수가 아웃을 잡은 것",
+      "투수가 볼을 던진 것"
+    ],
+    "answer": 0,
+    "explanation": "주자가 규칙에 맞게 홈플레이트에 도달하면 득점합니다.",
+    "optionExplanations": [
+      "주자가 규칙에 따라 홈을 밟으면 득점합니다.",
+      "스트라이크는 투구 판정이지 득점이 아닙니다.",
+      "수비수가 아웃을 잡으면 아웃카운트가 늘어납니다.",
+      "투수가 볼을 던진 것은 투구 판정이지 득점이 아닙니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘타율’의 의미로 알맞은 것은?",
+    "options": [
+      "득점을 경기 수로 나눈 비율",
+      "볼넷을 타석으로 나눈 비율",
+      "홈런을 안타로 나눈 비율",
+      "안타 수를 타수로 나눈 비율"
+    ],
+    "answer": 3,
+    "explanation": "타율은 안타 ÷ 타수로 계산합니다.",
+    "optionExplanations": [
+      "득점을 경기 수로 나누면 경기당 평균 득점입니다.",
+      "볼넷과 타석 수만으로는 정확한 출루율을 구할 수 없습니다.",
+      "홈런을 안타로 나눈 값은 타율이 아닙니다.",
+      "타율은 안타 수를 타수로 나누어 계산합니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘출루율’의 의미로 알맞은 것은?",
+    "options": [
+      "투수의 삼진 비율",
+      "수비 성공 비율",
+      "안타만으로 계산한 비율",
+      "타자가 출루하는 능력을 나타내는 비율"
+    ],
+    "answer": 3,
+    "explanation": "출루율은 안타, 볼넷, 사구 등을 반영하는 지표입니다.",
+    "optionExplanations": [
+      "투수의 삼진 비율은 투구 기록에 관한 지표입니다.",
+      "수비 성공 비율은 수비 능력을 나타내는 지표입니다.",
+      "안타만으로 계산하는 타율과 출루율은 다릅니다.",
+      "출루율은 안타·볼넷·사구 등을 반영해 출루 능력을 나타냅니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘장타율’의 의미로 알맞은 것은?",
+    "options": [
+      "볼넷 수를 경기 수로 나눈 값",
+      "타수당 총루타 수를 나타내는 비율",
+      "안타 수를 경기 수로 나눈 값",
+      "삼진 수를 타수로 나눈 값"
+    ],
+    "answer": 1,
+    "explanation": "장타율은 총루타 ÷ 타수입니다.",
+    "optionExplanations": [
+      "볼넷 수를 경기 수로 나눈 값은 경기당 평균 볼넷 수입니다.",
+      "장타율은 총루타를 타수로 나눈 값입니다.",
+      "안타 수를 경기 수로 나눈 값은 경기당 평균 안타 수입니다.",
+      "삼진 수를 타수로 나눈 값은 장타율이 아닙니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘OPS’의 의미로 알맞은 것은?",
+    "options": [
+      "출루율과 장타율의 합",
+      "타율과 방어율의 합",
+      "승률과 타율의 합",
+      "삼진과 볼넷의 합"
+    ],
+    "answer": 0,
+    "explanation": "OPS는 출루율(On-base Percentage)과 장타율(Slugging Percentage)의 합입니다.",
+    "optionExplanations": [
+      "OPS는 출루율과 장타율을 더한 지표입니다.",
+      "타율과 평균자책점을 더한 것은 OPS가 아닙니다.",
+      "승률과 타율을 더한 것은 OPS가 아닙니다.",
+      "삼진과 볼넷의 합은 OPS가 아닙니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘도루’의 의미로 알맞은 것은?",
+    "options": [
+      "타자가 안타를 친 상황",
+      "수비수가 타구를 잡는 플레이",
+      "투수가 주자를 아웃시키는 플레이",
+      "타구 없이 주자가 다음 루를 훔쳐 진루하는 플레이"
+    ],
+    "answer": 3,
+    "explanation": "도루는 주자가 투구 상황 등을 이용해 다음 루로 진루하는 플레이입니다.",
+    "optionExplanations": [
+      "타자가 안타를 치는 것은 타격 기록입니다.",
+      "수비수가 타구를 잡는 것은 수비 플레이입니다.",
+      "투수가 주자를 아웃시키는 것은 견제 등 수비 플레이입니다.",
+      "주자가 타구 없이 다음 루를 훔쳐 진루하면 도루입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘견제’의 의미로 알맞은 것은?",
+    "options": [
+      "포수가 파울을 잡는 행위",
+      "주자가 홈으로 뛰는 행위",
+      "투수가 주자의 진루를 막기 위해 루로 공을 던지는 행위",
+      "타자가 번트를 대는 행위"
+    ],
+    "answer": 2,
+    "explanation": "견제구는 주자의 리드나 도루를 억제하기 위해 루로 던지는 공입니다.",
+    "optionExplanations": [
+      "포수가 파울 타구를 잡으면 파울 플라이 아웃이 될 수 있습니다.",
+      "주자가 홈으로 달려가는 것은 주루 플레이입니다.",
+      "투수가 주자를 잡으려고 루에 공을 던지면 견제구입니다.",
+      "타자가 배트를 갖다 대 짧게 굴리면 번트입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘태그 아웃’의 의미로 알맞은 것은?",
+    "options": [
+      "투수가 볼넷을 내주는 것",
+      "수비수가 공을 가진 손이나 글러브로 주자를 태그해 잡는 아웃",
+      "타자가 삼진을 당하는 것",
+      "타자가 뜬공을 치는 것"
+    ],
+    "answer": 1,
+    "explanation": "태그가 필요한 상황에서는 공을 확실히 가진 수비수가 주자에게 태그해야 합니다.",
+    "optionExplanations": [
+      "투수가 볼 네 개를 내주면 볼넷입니다.",
+      "공을 가진 손이나 글러브로 주자를 규정대로 터치하면 태그 아웃입니다.",
+      "타자가 세 번째 스트라이크를 받으면 삼진입니다.",
+      "타자가 뜬공을 치고 수비가 잡으면 플라이 아웃입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘포스 아웃’의 의미로 알맞은 것은?",
+    "options": [
+      "주자가 의무적으로 진루해야 하는 루를 수비수가 먼저 점유해 잡는 아웃",
+      "뜬공을 잡아 만드는 아웃",
+      "삼진으로 만드는 아웃",
+      "주자를 반드시 태그해야 하는 아웃"
+    ],
+    "answer": 0,
+    "explanation": "포스 상황에서는 수비수가 공을 가진 채 해당 루를 먼저 밟아 아웃시킬 수 있습니다.",
+    "optionExplanations": [
+      "수비수가 공을 가진 채 의무 진루할 루를 먼저 밟으면 포스 아웃입니다.",
+      "수비수가 뜬공을 잡아 타자를 아웃시키면 플라이 아웃입니다.",
+      "세 번째 스트라이크로 삼진을 기록할 수 있습니다.",
+      "포스 상태가 아닌 주자는 일반적으로 태그해야 아웃시킬 수 있습니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘병살타’의 의미로 알맞은 것은?",
+    "options": [
+      "두 명이 연속 안타를 치는 것",
+      "두 점이 나는 홈런",
+      "투수가 두 번 연속 볼을 던지는 것",
+      "타자의 타구로 규정에 따라 두 개의 아웃이 기록되는 플레이"
+    ],
+    "answer": 3,
+    "explanation": "병살타는 타자의 타구로 규정에 따라 한 플레이에서 아웃 2개가 기록되는 경우입니다. 모든 병살 플레이가 병살타로 기록되지는 않습니다.",
+    "optionExplanations": [
+      "두 타자가 연속 안타를 치는 것은 연속 안타입니다.",
+      "주자 한 명과 타자가 득점하는 홈런은 2점 홈런입니다.",
+      "투수가 볼 두 개를 연속 던져도 그것만으로 병살은 아닙니다.",
+      "한 플레이에서 아웃 두 개를 잡으면 병살입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘희생번트’의 의미로 알맞은 것은?",
+    "options": [
+      "볼넷을 얻는 타격",
+      "도루를 시도하는 플레이",
+      "주자를 진루시키기 위해 번트를 대고 타자가 아웃되는 플레이",
+      "홈런을 노리는 강한 타격"
+    ],
+    "answer": 2,
+    "explanation": "희생번트는 주자 진루를 목적으로 번트를 대고 규정에 따라 기록되는 플레이입니다.",
+    "optionExplanations": [
+      "타자가 볼넷으로 출루하는 것은 희생번트가 아닙니다.",
+      "주자가 도루를 시도하는 것은 주루 플레이입니다.",
+      "번트로 주자를 진루시키고 타자가 아웃되면 희생번트가 될 수 있습니다.",
+      "강하게 타격하는 것은 번트와 다른 타격 방식입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘희생플라이’의 의미로 알맞은 것은?",
+    "options": [
+      "번트를 댄 타구",
+      "잡힌 뜬공 뒤 주자가 득점하는 등 규정 요건을 충족한 타구",
+      "땅볼로 병살을 만드는 타구",
+      "파울을 친 타구"
+    ],
+    "answer": 1,
+    "explanation": "희생플라이는 잡힌 외야 뜬공 등의 상황에서 주자가 득점할 때 규정에 따라 기록됩니다.",
+    "optionExplanations": [
+      "번트 타구라도 규정 요건에 맞지 않으면 희생플라이가 아닙니다.",
+      "잡힌 뜬공으로 주자가 득점하고 요건을 충족하면 희생플라이입니다.",
+      "땅볼로 병살이 되면 일반적으로 희생플라이가 아닙니다.",
+      "파울 타구 자체가 희생플라이라는 뜻은 아닙니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘번트’의 의미로 알맞은 것은?",
+    "options": [
+      "배트를 크게 휘둘러 공을 멀리 보내는 타격",
+      "배트를 크게 휘두르지 않고 공에 갖다 대는 타격",
+      "공을 피하는 동작",
+      "투수가 공을 던지는 동작"
+    ],
+    "answer": 1,
+    "explanation": "번트는 배트를 크게 휘두르지 않고 공에 갖다 대는 타격입니다. 공이 반드시 땅으로 굴러가는 것은 아닙니다.",
+    "optionExplanations": [
+      "배트를 크게 휘두르는 것은 일반적인 스윙입니다.",
+      "배트를 크게 휘두르지 않고 공에 갖다 대는 타격은 번트입니다.",
+      "공을 피하는 것은 타격 방식이 아닙니다.",
+      "투수가 공을 던지는 것은 투구입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘파울’의 의미로 알맞은 것은?",
+    "options": [
+      "파울 지역에 떨어지거나 규정상 파울이 된 타구",
+      "홈런이 된 타구",
+      "내야에 멈춘 모든 타구",
+      "페어 지역으로 간 타구"
+    ],
+    "answer": 0,
+    "explanation": "파울 여부는 타구가 멈추거나 지나간 위치와 규칙에 따라 판단합니다.",
+    "optionExplanations": [
+      "파울 지역에 떨어지거나 규정상 파울로 판정된 타구는 파울입니다.",
+      "담장을 넘겼더라도 파울 지역이면 홈런이 아닙니다.",
+      "내야에 멈춘 타구도 위치에 따라 페어 또는 파울입니다.",
+      "페어 지역으로 간 타구는 규정에 따라 페어가 됩니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘페어볼’의 의미로 알맞은 것은?",
+    "options": [
+      "스트라이크존을 벗어난 투구",
+      "포수가 놓친 투구",
+      "규정상 페어 지역에 해당하는 타구",
+      "항상 관중석으로 들어간 타구"
+    ],
+    "answer": 2,
+    "explanation": "페어볼은 페어 지역과 관련된 규칙에 따라 판정되는 타구입니다.",
+    "optionExplanations": [
+      "스트라이크존 밖의 투구를 스윙하지 않으면 보통 볼입니다.",
+      "포수가 놓친 투구는 폭투 또는 포일 등이 될 수 있습니다.",
+      "규정상 페어 지역에 해당하는 타구는 페어 볼입니다.",
+      "관중석으로 간 타구도 페어인지 파울인지에 따라 판정이 다릅니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘파울팁’의 의미로 알맞은 것은?",
+    "options": [
+      "땅에 맞고 포수가 잡은 공",
+      "배트에 살짝 맞고 포수의 손이나 미트에 직접 들어가 정규 포구된 공",
+      "모든 파울 뜬공",
+      "관중석으로 넘어간 파울"
+    ],
+    "answer": 1,
+    "explanation": "파울팁은 규정상 포수가 직접 정규 포구하면 스트라이크로 취급합니다.",
+    "optionExplanations": [
+      "땅에 먼저 맞은 공은 파울팁으로 정규 포구된 경우가 아닙니다.",
+      "배트에 스친 공이 포수의 손이나 미트로 직접 들어가 정규 포구되면 파울팁입니다.",
+      "파울 뜬공을 잡으면 보통 파울 플라이 아웃입니다.",
+      "관중석으로 간 파울은 파울팁이 아닙니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘낫아웃’의 의미로 알맞은 것은?",
+    "options": [
+      "특정 조건에서 세 번째 스트라이크를 포수가 정규 포구하지 못한 상황",
+      "볼넷이 된 상황",
+      "타자가 번트를 성공한 상황",
+      "수비수가 뜬공을 잡은 상황"
+    ],
+    "answer": 0,
+    "explanation": "낫아웃에서는 1루 점유와 아웃카운트 등의 조건에 따라 타자가 1루로 뛸 수 있습니다.",
+    "optionExplanations": [
+      "세 번째 스트라이크를 포수가 정규 포구하지 못하면 조건에 따라 낫아웃 상황이 됩니다.",
+      "볼 네 개는 볼넷이며 낫아웃과 다릅니다.",
+      "번트 성공은 낫아웃과 다른 타격 결과입니다.",
+      "뜬공을 잡으면 플라이 아웃입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘인필드 플라이’의 의미로 알맞은 것은?",
+    "options": [
+      "외야 담장을 넘긴 타구",
+      "내야 땅볼로 나온 안타",
+      "주자가 도루한 상황",
+      "특정 주자·아웃 상황에서 내야수가 보통 수비로 잡을 수 있는 뜬공에 대한 선언"
+    ],
+    "answer": 3,
+    "explanation": "1·2루 또는 만루, 무사나 1사에서 쉽게 잡을 수 있는 페어 뜬공 등에 적용됩니다.",
+    "optionExplanations": [
+      "외야 담장을 넘긴 페어 타구는 홈런이 될 수 있습니다.",
+      "내야 땅볼로 안전하게 출루하면 내야 안타가 될 수 있습니다.",
+      "도루는 주자가 다음 루를 훔쳐 가는 플레이입니다.",
+      "특정 주자·아웃 상황의 평범한 내야 뜬공은 인필드 플라이가 선언될 수 있습니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘보크’의 의미로 알맞은 것은?",
+    "options": [
+      "수비수가 공을 놓친 상황",
+      "타자가 헛스윙한 상황",
+      "투수가 주자가 있을 때 규정에 어긋나는 동작을 한 반칙",
+      "타자가 파울을 친 상황"
+    ],
+    "answer": 2,
+    "explanation": "보크는 주자가 있는 상황에서 투수의 불법 동작 등에 대해 선언됩니다.",
+    "optionExplanations": [
+      "수비수가 공을 놓쳐 처리하지 못하면 실책이 될 수 있습니다.",
+      "타자의 헛스윙은 스트라이크가 될 수 있습니다.",
+      "투수가 주자가 있을 때 규정에 어긋나는 동작을 하면 보크가 선언될 수 있습니다.",
+      "타자가 파울 타구를 치면 파울로 판정됩니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘폭투’의 의미로 알맞은 것은?",
+    "options": [
+      "야수가 송구를 잘못한 상황",
+      "투수의 공이 포수가 정상적으로 처리하기 어려워 주자가 진루한 상황",
+      "포수의 명백한 수비 실책",
+      "타자가 홈런을 친 상황"
+    ],
+    "answer": 1,
+    "explanation": "폭투는 포수가 정상적으로 처리하기 어려운 투구 때문에 주자가 진루할 때 기록됩니다.",
+    "optionExplanations": [
+      "야수의 악송구는 수비 실책으로 기록될 수 있습니다.",
+      "포수가 정상적으로 처리하기 어려운 투구 때문에 주자가 진루하면 폭투입니다.",
+      "포수가 처리할 수 있는 투구를 놓쳐 주자가 진루하면 포일입니다.",
+      "타자가 타구로 모든 루를 돌아 득점하면 홈런입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘포일’의 의미로 알맞은 것은?",
+    "options": [
+      "포수가 정상적으로 처리할 수 있는 투구를 놓쳐 주자가 진루한 상황",
+      "투수의 고의 볼넷",
+      "타자의 파울 타구",
+      "수비수의 악송구"
+    ],
+    "answer": 0,
+    "explanation": "포일은 포수가 처리할 수 있는 투구를 놓쳐 주자가 진루한 경우입니다.",
+    "optionExplanations": [
+      "포수가 정상적으로 처리할 수 있는 투구를 놓쳐 주자가 진루하면 포일입니다.",
+      "투수가 의도적으로 볼넷을 주면 고의4구입니다.",
+      "파울 지역에 해당하는 타구는 파울입니다.",
+      "수비수의 잘못된 송구는 악송구이며 실책이 될 수 있습니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘실책’의 의미로 알맞은 것은?",
+    "options": [
+      "타자가 안타를 친 기록",
+      "투수가 삼진을 잡은 기록",
+      "주자가 득점한 기록",
+      "수비수가 보통 수비로 처리할 플레이를 잘못해 불이익을 준 기록"
+    ],
+    "answer": 3,
+    "explanation": "실책은 수비의 잘못으로 타자나 주자가 이익을 얻은 경우 규정에 따라 기록됩니다.",
+    "optionExplanations": [
+      "타자의 안타는 타격 기록입니다.",
+      "투수의 탈삼진은 투구 기록입니다.",
+      "주자의 득점은 공격 기록입니다.",
+      "수비수가 보통 수비로 처리할 수 있는 플레이를 잘못하면 실책이 될 수 있습니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘야수 선택’의 의미로 알맞은 것은?",
+    "options": [
+      "볼넷으로 출루한 기록",
+      "타자가 삼진당한 기록",
+      "수비수가 타자 대신 다른 주자를 잡으려는 선택과 관련된 기록",
+      "타자가 친 홈런"
+    ],
+    "answer": 2,
+    "explanation": "야수 선택은 수비가 다른 주자를 처리하려다 타자주자가 출루하는 등의 상황에 사용됩니다.",
+    "optionExplanations": [
+      "볼넷은 볼 네 개로 출루하는 것입니다.",
+      "삼진은 세 번째 스트라이크로 기록됩니다.",
+      "수비수가 다른 주자를 잡으려 선택한 플레이로 타자가 출루하면 야수 선택이 기록될 수 있습니다.",
+      "타자가 타구로 모든 루를 돌아 득점하면 홈런입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘선발투수’의 의미로 알맞은 것은?",
+    "options": [
+      "불펜에서 몸을 푸는 모든 투수",
+      "경기 시작 시 처음 등판하는 투수",
+      "경기 마지막에 등판하는 투수",
+      "항상 9회만 던지는 투수"
+    ],
+    "answer": 1,
+    "explanation": "선발투수는 해당 경기에서 가장 먼저 투구하는 투수입니다.",
+    "optionExplanations": [
+      "불펜에서 몸을 푼다고 모두 선발투수인 것은 아닙니다.",
+      "경기 시작 시 처음 등판하는 투수가 선발투수입니다.",
+      "경기 마지막에 등판하는 투수는 마지막 투수이며 반드시 선발은 아닙니다.",
+      "9회에만 던지는 투수라는 뜻은 아닙니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘구원투수’의 의미로 알맞은 것은?",
+    "options": [
+      "선발투수 이후에 등판하는 투수",
+      "항상 첫 타석에 서는 선수",
+      "포수를 대신하는 선수",
+      "선발로만 뛰는 투수"
+    ],
+    "answer": 0,
+    "explanation": "구원투수는 다른 투수의 뒤를 이어 마운드에 오르는 투수입니다.",
+    "optionExplanations": [
+      "선발투수 이후에 등판하는 투수는 구원투수입니다.",
+      "첫 타석에 서는 선수는 선두타자일 수 있습니다.",
+      "포수를 대신해 수비하는 선수는 교체 포수입니다.",
+      "선발로만 뛰는 투수는 구원투수와 다릅니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘마무리투수’의 의미로 알맞은 것은?",
+    "options": [
+      "반드시 첫 이닝에 등판하는 투수",
+      "수비만 하는 타자",
+      "모든 경기의 선발투수",
+      "주로 경기 후반 승리를 지키기 위해 등판하는 투수"
+    ],
+    "answer": 3,
+    "explanation": "마무리투수는 보통 경기 후반 리드를 지키는 역할을 맡습니다.",
+    "optionExplanations": [
+      "첫 이닝에 등판한다고 모두 마무리투수인 것은 아닙니다.",
+      "수비만 하는 타자는 마무리투수의 뜻이 아닙니다.",
+      "모든 경기의 선발투수는 마무리투수와 다릅니다.",
+      "마무리투수는 주로 경기 후반 승리를 지키기 위해 등판합니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘세이브’의 의미로 알맞은 것은?",
+    "options": [
+      "투수의 모든 승리 기록",
+      "수비수의 실책 기록",
+      "규정된 상황에서 리드를 지키며 경기를 끝낸 구원투수의 기록",
+      "타자의 안타 기록"
+    ],
+    "answer": 2,
+    "explanation": "세이브는 정해진 요건을 충족한 마무리 구원투수에게 기록됩니다.",
+    "optionExplanations": [
+      "투수의 승리는 규정에 따라 기록되는 승리투수 기록입니다.",
+      "수비수의 실책은 수비 기록입니다.",
+      "세이브는 규정된 상황에서 리드를 지키고 경기를 끝낸 구원투수에게 주어집니다.",
+      "타자의 안타는 타격 기록입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘홀드’의 의미로 알맞은 것은?",
+    "options": [
+      "포수가 도루를 성공한 기록",
+      "리드 상황을 지킨 구원투수에게 요건에 따라 주어지는 기록",
+      "타자가 홈런을 친 기록",
+      "선발투수가 완투한 기록"
+    ],
+    "answer": 1,
+    "explanation": "홀드는 세이브와 다른 구원투수 기록으로, 리드를 유지한 중간계투에 적용됩니다.",
+    "optionExplanations": [
+      "포수의 도루는 주루 기록입니다.",
+      "홀드는 리드 상황을 지킨 구원투수에게 규정에 따라 주어집니다.",
+      "타자의 홈런은 타격 기록입니다.",
+      "선발투수의 완투는 경기 투구를 끝까지 맡은 기록입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘평균자책점(ERA)’의 의미로 알맞은 것은?",
+    "options": [
+      "9이닝당 평균 자책점을 나타내는 지표",
+      "타자의 출루율",
+      "수비수의 실책률",
+      "투수의 타율"
+    ],
+    "answer": 0,
+    "explanation": "ERA는 자책점 × 9 ÷ 투구 이닝으로 계산합니다.",
+    "optionExplanations": [
+      "평균자책점은 9이닝당 평균 자책점을 나타냅니다.",
+      "출루율은 타자가 출루하는 능력을 나타냅니다.",
+      "실책률은 수비에 관한 지표입니다.",
+      "투수의 타율은 타격에 관한 지표입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘완투’의 의미로 알맞은 것은?",
+    "options": [
+      "한 타자가 모든 타석에서 안타를 치는 것",
+      "모든 야수가 교체되는 것",
+      "투수가 한 이닝만 던지는 것",
+      "한 투수가 팀의 해당 경기 투구를 처음부터 끝까지 맡는 것"
+    ],
+    "answer": 3,
+    "explanation": "완투는 한 투수가 그 팀의 해당 경기 투구를 시작부터 끝까지 맡는 것입니다. 경기가 반드시 9이닝일 필요는 없습니다.",
+    "optionExplanations": [
+      "한 타자가 모든 타석에서 안타를 치는 것은 완투가 아닙니다.",
+      "야수가 모두 교체되는 것은 완투와 관계없습니다.",
+      "한 이닝만 던진 투수는 완투를 기록하지 못합니다.",
+      "한 투수가 팀의 해당 경기 투구를 처음부터 끝까지 맡으면 완투입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘완봉’의 의미로 알맞은 것은?",
+    "options": [
+      "타자가 삼진 없이 끝낸 경기",
+      "두 투수가 함께 무실점한 경기",
+      "한 투수가 상대 팀을 무득점으로 막으며 완투해 승리한 기록",
+      "9회에 홈런을 친 기록"
+    ],
+    "answer": 2,
+    "explanation": "완봉승은 투수가 완투하면서 상대 팀을 무득점으로 막아 승리한 기록입니다.",
+    "optionExplanations": [
+      "타자가 삼진 없이 경기를 마치는 것은 완봉과 다릅니다.",
+      "여러 투수가 함께 무실점으로 막으면 합작 완봉이 될 수 있지만 개인 완봉은 아닙니다.",
+      "한 투수가 상대 팀을 무득점으로 막고 완투해 이기면 완봉승입니다.",
+      "9회 홈런은 타격 기록이지 완봉승이 아닙니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘퀄리티 스타트(QS)’의 의미로 알맞은 것은?",
+    "options": [
+      "타자가 6안타를 친 기록",
+      "선발투수가 6이닝 이상 던지고 자책점 3점 이하인 기록",
+      "선발투수가 3이닝 무실점한 기록",
+      "구원투수가 1이닝을 막은 기록"
+    ],
+    "answer": 1,
+    "explanation": "QS는 선발투수의 6이닝 이상, 자책점 3점 이하 투구를 뜻합니다.",
+    "optionExplanations": [
+      "한 경기 6안타는 타자의 타격 기록입니다.",
+      "선발투수가 6이닝 이상 던지고 자책점 3점 이하이면 퀄리티 스타트입니다.",
+      "3이닝 무실점만으로는 퀄리티 스타트가 아닙니다.",
+      "구원투수의 1이닝 투구는 퀄리티 스타트가 아닙니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘지명타자(DH)’의 의미로 알맞은 것은?",
+    "options": [
+      "투수 대신 타격하는 역할로 지정된 선수",
+      "포수 대신 수비하는 선수",
+      "주루만 하는 선수",
+      "감독 대신 작전 지시하는 선수"
+    ],
+    "answer": 0,
+    "explanation": "지명타자는 규정에 따라 투수 대신 타순에 들어가 타격을 담당합니다.",
+    "optionExplanations": [
+      "지명타자는 투수 대신 타격하는 역할로 지정된 선수입니다.",
+      "포수 대신 수비하는 선수는 교체 포수입니다.",
+      "주루만 대신하는 선수는 대주자입니다.",
+      "작전 지시는 감독과 코치의 역할입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘대타’의 의미로 알맞은 것은?",
+    "options": [
+      "주자 대신 뛰는 선수",
+      "투수를 대신해 수비하는 선수",
+      "심판을 대신하는 선수",
+      "다른 타자 대신 타석에 들어서는 선수"
+    ],
+    "answer": 3,
+    "explanation": "대타는 타순에서 다른 선수를 대신해 타격하는 선수입니다.",
+    "optionExplanations": [
+      "다른 주자를 대신해 뛰는 선수는 대주자입니다.",
+      "투수를 대신해 수비하는 선수는 교체 투수 등입니다.",
+      "심판은 선수 교체로 대신할 수 없습니다.",
+      "다른 타자를 대신해 타석에 들어서는 선수는 대타입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘대주자’의 의미로 알맞은 것은?",
+    "options": [
+      "타자 대신 타격하는 선수",
+      "포수 대신 공을 받는 선수",
+      "다른 주자 대신 루에 나가 뛰는 선수",
+      "투수 대신 공을 던지는 선수"
+    ],
+    "answer": 2,
+    "explanation": "대주자는 출루한 선수 대신 주루를 맡는 교체 선수입니다.",
+    "optionExplanations": [
+      "다른 타자 대신 타격하면 대타입니다.",
+      "포수 대신 공을 받으면 교체 포수입니다.",
+      "다른 주자 대신 루에 나가 뛰는 선수는 대주자입니다.",
+      "투수 대신 공을 던지는 선수는 교체 투수입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘리드오프’의 의미로 알맞은 것은?",
+    "options": [
+      "마무리투수만을 뜻하는 표현",
+      "타순에서 1번 타자를 뜻하는 표현",
+      "항상 마지막 타자를 뜻하는 표현",
+      "포수만을 뜻하는 표현"
+    ],
+    "answer": 1,
+    "explanation": "리드오프는 보통 1번 타자를 의미합니다.",
+    "optionExplanations": [
+      "마무리투수는 주로 경기 후반에 등판하는 투수입니다.",
+      "1번 타자는 타순의 첫 번째 타자입니다.",
+      "마지막 타자는 타순상 마지막에 서는 타자입니다.",
+      "포수는 홈플레이트 뒤에서 투구를 받는 수비수입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘클린업 트리오’의 의미로 알맞은 것은?",
+    "options": [
+      "일반적으로 3·4·5번 중심 타순",
+      "1·2·3번 타순",
+      "7·8·9번 타순",
+      "투수 세 명의 조합"
+    ],
+    "answer": 0,
+    "explanation": "클린업 트리오는 흔히 3·4·5번 중심 타자를 가리킵니다.",
+    "optionExplanations": [
+      "3·4·5번 타순은 일반적으로 중심 타선으로 불립니다.",
+      "1·2·3번은 상위 타순이며 중심 타선과 구분됩니다.",
+      "7·8·9번은 일반적으로 하위 타순입니다.",
+      "투수 세 명의 조합은 타선이 아니라 투수진에 관한 표현입니다."
+    ]
+  },
+  {
+    "question": "다음 중 ‘사이클링 히트’의 의미로 알맞은 것은?",
+    "options": [
+      "한 경기에서 홈런 네 개를 기록",
+      "네 경기 연속 안타를 기록",
+      "한 이닝에 세 번 출루",
+      "한 경기에서 단타·2루타·3루타·홈런을 모두 기록"
+    ],
+    "answer": 3,
+    "explanation": "사이클링 히트는 한 경기에서 네 종류의 안타를 모두 기록하는 것입니다.",
+    "optionExplanations": [
+      "한 경기 홈런 네 개는 홈런 기록이지 사이클링 히트가 아닙니다.",
+      "네 경기 연속 안타는 연속 경기 안타 기록입니다.",
+      "한 이닝에 세 번 출루하는 것은 사이클링 히트가 아닙니다.",
+      "한 경기에서 단타·2루타·3루타·홈런을 모두 치면 사이클링 히트입니다."
+    ]
+  }
+];
+const oxQuestions = [
+  {
+    "question": "야구는 일반적으로 두 팀이 공격과 수비를 번갈아 한다.",
+    "answer": true,
+    "explanation": "한 팀이 공격할 때 다른 팀은 수비하고, 공수가 교대됩니다."
+  },
+  {
+    "question": "정규 야구 경기는 보통 7이닝으로 구성된다.",
+    "answer": false,
+    "explanation": "일반적인 성인 프로야구 정규 경기는 9이닝입니다."
+  },
+  {
+    "question": "공격 팀에서 아웃이 세 개가 되면 공수가 교대된다.",
+    "answer": true,
+    "explanation": "한 팀의 공격에서 아웃 3개가 기록되면 해당 반이닝이 끝납니다."
+  },
+  {
+    "question": "스트라이크가 두 개일 때 일반 파울 타구는 언제나 삼진이 된다.",
+    "answer": false,
+    "explanation": "일반 파울은 2스트라이크 이후 스트라이크를 추가하지 않습니다. 번트 파울 등은 예외입니다."
+  },
+  {
+    "question": "볼 네 개가 선언되면 타자는 1루로 진루할 수 있다.",
+    "answer": true,
+    "explanation": "볼넷으로 타자는 1루에 나갑니다."
+  },
+  {
+    "question": "타자는 스트라이크 세 개가 선언되면 예외 없이 즉시 아웃이다.",
+    "answer": false,
+    "explanation": "세 번째 스트라이크를 포수가 잡지 못한 낫아웃 상황에서는 조건에 따라 1루로 뛸 수 있습니다."
+  },
+  {
+    "question": "공이 스트라이크존을 통과해도 타자가 휘두르지 않으면 스트라이크가 될 수 있다.",
+    "answer": true,
+    "explanation": "타자가 스윙하지 않아도 존을 통과한 공은 스트라이크로 선언될 수 있습니다."
+  },
+  {
+    "question": "스트라이크존을 벗어난 공을 타자가 헛스윙하면 볼이다.",
+    "answer": false,
+    "explanation": "스트라이크존 밖이라도 타자가 헛스윙하면 스트라이크입니다."
+  },
+  {
+    "question": "타구가 외야 담장을 넘어 규정상 홈런이 되면 타자는 모든 루를 돌아 득점한다.",
+    "answer": true,
+    "explanation": "홈런이 인정되면 타자는 각 루를 차례대로 밟고 홈으로 들어옵니다."
+  },
+  {
+    "question": "주자가 없는 상태에서 홈런을 치면 보통 4점이 난다.",
+    "answer": false,
+    "explanation": "주자가 없을 때의 솔로 홈런은 1점입니다."
+  },
+  {
+    "question": "만루 홈런은 한 번에 4점을 낼 수 있다.",
+    "answer": true,
+    "explanation": "세 명의 주자와 타자가 모두 득점하여 4점입니다."
+  },
+  {
+    "question": "타자가 1루에 도달하면 항상 안타로 기록된다.",
+    "answer": false,
+    "explanation": "볼넷, 사구, 실책, 야수 선택 등으로도 1루에 출루할 수 있습니다."
+  },
+  {
+    "question": "타자가 타구로 2루까지 안전하게 진루하면 2루타가 기록될 수 있다.",
+    "answer": true,
+    "explanation": "수비 실책 등 다른 사유가 없다면 2루타로 기록됩니다."
+  },
+  {
+    "question": "타율은 홈런 수를 타수로 나눈 값이다.",
+    "answer": false,
+    "explanation": "타율은 안타 수를 타수로 나눈 값입니다."
+  },
+  {
+    "question": "출루율에는 일반적으로 볼넷과 몸에 맞는 공이 반영된다.",
+    "answer": true,
+    "explanation": "출루율 계산에는 안타뿐 아니라 볼넷과 사구 등이 포함됩니다."
+  },
+  {
+    "question": "장타율은 타수당 총루타 수를 나타낸다.",
+    "answer": true,
+    "explanation": "장타율은 총루타를 타수로 나눈 값입니다."
+  },
+  {
+    "question": "OPS는 타율과 평균자책점을 더한 값이다.",
+    "answer": false,
+    "explanation": "OPS는 출루율과 장타율의 합입니다."
+  },
+  {
+    "question": "주자는 공이 타격되지 않아도 도루를 시도할 수 있다.",
+    "answer": true,
+    "explanation": "도루는 타구 없이도 주자가 다음 루로 진루하려는 플레이입니다."
+  },
+  {
+    "question": "주자가 1루에 있으면 언제나 2루로 도루할 수 없다.",
+    "answer": false,
+    "explanation": "1루 주자는 상황에 따라 2루 도루를 시도할 수 있습니다."
+  },
+  {
+    "question": "포스 아웃 상황에서는 수비수가 해당 루를 공을 가진 채 먼저 밟아 아웃시킬 수 있다.",
+    "answer": true,
+    "explanation": "주자가 의무적으로 진루해야 하는 상황에서는 태그 없이 루를 밟아 아웃시킬 수 있습니다."
+  },
+  {
+    "question": "모든 주자 아웃에는 반드시 주자 몸에 태그해야 한다.",
+    "answer": false,
+    "explanation": "포스 아웃이나 타구 포구 등 태그가 필요하지 않은 아웃도 있습니다."
+  },
+  {
+    "question": "수비수가 뜬공을 땅에 닿기 전에 정규 포구하면 타자는 아웃이다.",
+    "answer": true,
+    "explanation": "페어·파울을 막론하고 정규 포구된 뜬공은 일반적으로 타자 아웃입니다."
+  },
+  {
+    "question": "파울 지역에서 잡힌 뜬공은 절대로 아웃이 아니다.",
+    "answer": false,
+    "explanation": "파울 지역의 뜬공도 수비수가 정규 포구하면 타자가 아웃입니다."
+  },
+  {
+    "question": "2스트라이크 이후 번트를 댄 공이 파울이 되면 일반적으로 삼진이다.",
+    "answer": true,
+    "explanation": "2스트라이크에서 번트 파울은 세 번째 스트라이크로 처리됩니다."
+  },
+  {
+    "question": "파울팁은 포수가 정규 포구해도 언제나 파울볼이다.",
+    "answer": false,
+    "explanation": "규정상 파울팁을 포수가 정규 포구하면 스트라이크입니다."
+  },
+  {
+    "question": "인필드 플라이는 주자 상황과 아웃카운트에 관계없이 모든 내야 뜬공에 적용된다.",
+    "answer": false,
+    "explanation": "주자 1·2루 또는 만루이고 무사·1사 등 특정 조건이 필요합니다."
+  },
+  {
+    "question": "무사 1·2루에서 쉽게 잡을 수 있는 내야 뜬공은 인필드 플라이 대상이 될 수 있다.",
+    "answer": true,
+    "explanation": "해당 주자 상황과 아웃카운트에서는 규정 요건을 충족한 뜬공에 선언할 수 있습니다."
+  },
+  {
+    "question": "인필드 플라이가 선언되면 타자는 원칙적으로 아웃이다.",
+    "answer": true,
+    "explanation": "인필드 플라이 선언 시 타자는 포구 여부와 관계없이 원칙적으로 아웃입니다."
+  },
+  {
+    "question": "투수의 보크는 주자가 없을 때도 동일하게 선언된다.",
+    "answer": false,
+    "explanation": "보크는 주자가 있는 상황의 투수 반칙이며, 주자가 없을 때는 별도의 불법투구 규정 등이 적용됩니다."
+  },
+  {
+    "question": "투수가 주자가 있을 때 규정에 어긋나는 견제 동작을 하면 보크가 될 수 있다.",
+    "answer": true,
+    "explanation": "주자가 있는 상황의 불법 투구·견제 동작은 보크 사유가 될 수 있습니다."
+  },
+  {
+    "question": "폭투와 포일은 항상 같은 의미다.",
+    "answer": false,
+    "explanation": "폭투는 투수의 처리하기 어려운 투구, 포일은 포수가 처리할 수 있는 공을 놓친 경우입니다."
+  },
+  {
+    "question": "포수가 정상적으로 받을 수 있는 공을 놓쳐 주자가 진루하면 포일이 기록될 수 있다.",
+    "answer": true,
+    "explanation": "포수의 처리 가능한 투구를 놓친 탓에 주자가 진루하면 포일이 될 수 있습니다."
+  },
+  {
+    "question": "수비 실책으로 출루한 타자는 반드시 안타도 기록된다.",
+    "answer": false,
+    "explanation": "실책에 의한 출루는 일반적으로 안타로 기록되지 않습니다."
+  },
+  {
+    "question": "한 타구로 두 개의 아웃이 만들어지는 플레이를 병살이라고 한다.",
+    "answer": true,
+    "explanation": "한 플레이에서 두 아웃을 잡는 것이 병살입니다."
+  },
+  {
+    "question": "병살 플레이에서는 반드시 세 명의 주자가 아웃된다.",
+    "answer": false,
+    "explanation": "병살은 아웃 2개를 뜻합니다. 3개는 삼중살입니다."
+  },
+  {
+    "question": "주자가 3루에 있을 때 희생플라이로 득점할 수 있다.",
+    "answer": true,
+    "explanation": "잡힌 뜬공 뒤 주자가 규정에 맞게 홈으로 들어오면 희생플라이가 기록될 수 있습니다."
+  },
+  {
+    "question": "희생번트는 반드시 홈런을 치기 위한 타격 방법이다.",
+    "answer": false,
+    "explanation": "희생번트는 보통 주자를 진루시키려는 목적의 번트입니다."
+  },
+  {
+    "question": "대타는 기존 타자를 대신해 타석에 들어설 수 있다.",
+    "answer": true,
+    "explanation": "대타는 타석에서 다른 선수를 대신하는 교체 선수입니다."
+  },
+  {
+    "question": "대주자는 투수 대신 마운드에 올라 공을 던지는 선수다.",
+    "answer": false,
+    "explanation": "대주자는 다른 주자 대신 루에서 뛰는 선수입니다."
+  },
+  {
+    "question": "선발투수는 해당 경기에서 팀의 첫 투구를 맡는 투수다.",
+    "answer": true,
+    "explanation": "경기 시작 시 첫 번째로 등판하는 투수가 선발투수입니다."
+  },
+  {
+    "question": "구원투수는 선발투수보다 먼저 등판해야 한다.",
+    "answer": false,
+    "explanation": "구원투수는 선발 등 앞선 투수의 뒤를 이어 등판합니다."
+  },
+  {
+    "question": "평균자책점은 일반적으로 9이닝당 평균 자책점을 나타낸다.",
+    "answer": true,
+    "explanation": "ERA는 자책점에 9를 곱해 투구 이닝으로 나눈 지표입니다."
+  },
+  {
+    "question": "평균자책점은 숫자가 높을수록 무조건 더 좋은 투구 성적을 뜻한다.",
+    "answer": false,
+    "explanation": "일반적으로 평균자책점은 낮을수록 자책점 허용이 적다는 뜻입니다."
+  },
+  {
+    "question": "퀄리티 스타트는 선발투수가 6이닝 이상, 자책점 3점 이하로 던진 기록이다.",
+    "answer": true,
+    "explanation": "QS는 6이닝 이상과 자책점 3점 이하를 모두 충족해야 합니다."
+  },
+  {
+    "question": "선발투수가 5이닝을 무실점으로 던지면 퀄리티 스타트다.",
+    "answer": false,
+    "explanation": "자책점이 0이어도 6이닝 이상을 던져야 QS입니다."
+  },
+  {
+    "question": "지명타자는 규정에 따라 투수 대신 타격할 수 있다.",
+    "answer": true,
+    "explanation": "지명타자는 타순에서 투수 대신 타격하는 역할입니다."
+  },
+  {
+    "question": "타자가 볼넷으로 출루하면 언제나 2루로 바로 진루한다.",
+    "answer": false,
+    "explanation": "볼넷으로 타자에게 주어지는 기본 진루권은 1루입니다."
+  },
+  {
+    "question": "공격 팀의 주자가 홈플레이트를 규칙에 맞게 밟으면 득점할 수 있다.",
+    "answer": true,
+    "explanation": "주자가 합법적으로 홈을 밟으면 규정에 따라 득점합니다."
+  },
+  {
+    "question": "9회 말 홈팀이 앞서 있더라도 반드시 9회 말 공격을 한다.",
+    "answer": false,
+    "explanation": "9회 초가 끝났을 때 홈팀이 앞서 있으면 9회 말 공격 없이 경기가 종료됩니다."
+  },
+  {
+    "question": "9회 말 또는 연장전 말 공격에서 끝내기 득점이 나오면 경기가 종료될 수 있다.",
+    "answer": true,
+    "explanation": "말 공격에서 홈팀이 승리 득점을 올리면 규정에 따라 경기가 끝납니다."
+  }
+];
+// 문제 데이터 무결성 확인: 선택지 번호는 0부터 저장하고 화면에는 1부터 표시합니다.
+termQuestions.forEach((q,i)=>{if(q.options.length!==4||q.optionExplanations.length!==4||!Number.isInteger(q.answer)||q.answer<0||q.answer>3)throw new Error('용어 퀴즈 데이터 오류: '+(i+1)+'번');});
+oxQuestions.forEach((q,i)=>{if(typeof q.answer!=='boolean')throw new Error('OX 퀴즈 데이터 오류: '+(i+1)+'번');});
+// 새로 시작할 때마다 각 퀴즈의 문제 순서를 무작위로 섞습니다.
+function shuffledQuestions(source){
+ const result=[...source];
+ for(let i=result.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [result[i],result[j]]=[result[j],result[i]];
+ }
+ return result;
+}
+const quizState={terms:{index:0,selected:null,checked:false,history:[],finished:false},ox:{index:0,selected:null,checked:false,history:[],finished:false}};
+const quizOrders={terms:shuffledQuestions(termQuestions),ox:shuffledQuestions(oxQuestions)};
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const getQuestions=kind=>quizOrders[kind];
+function renderSummary(kind){
+ const s=quizState[kind],root=document.getElementById(kind+'-app');
+ const correctCount=s.history.filter(h=>h.correct).length;
+ const wrongCount=s.history.length-correctCount;
+ root.innerHTML=`<div class="finish"><h2>⚾ 퀴즈 결과</h2><p>지금까지 정답 확인을 마친 문제의 결과예요.</p><div class="summary-stats"><div class="stat">푼 문제<b>${s.history.length}</b></div><div class="stat">정답<b>${correctCount}</b></div><div class="stat">오답<b>${wrongCount}</b></div></div><h3>내가 풀었던 문제</h3><div class="review-list">${s.history.length?s.history.map((h,i)=>`<div class="review-item"><strong>${escapeHtml(h.question)}</strong><p>내 답: ${escapeHtml(h.myAnswer)}</p><p>정답: ${escapeHtml(h.rightAnswer)}</p><p class="${h.correct?'ok':'bad'}">${h.correct?'정답':'오답'}</p><p>해설: ${escapeHtml(h.explanation)}</p></div>`).join(''):'<p style="text-align:center">아직 정답을 확인한 문제가 없어요.</p>'}</div><button class="btn primary" onclick="restartQuiz('${kind}')">처음부터 다시 풀기</button></div>`;
+}
+function renderQuiz(kind){
+ const questions=getQuestions(kind),s=quizState[kind],root=document.getElementById(kind+'-app');
+ if(s.finished||s.index>=questions.length){renderSummary(kind);return;}
+ const q=questions[s.index],correct=kind==='terms'?q.answer:(q.answer?0:1);
+ const opts=kind==='terms'?q.options:['O','X'];
+ root.innerHTML=`<div class="progress-line"><span>${kind==='terms'?'야구 용어 퀴즈':'야구 룰 OX 퀴즈'}</span></div><div class="quiz-card"><h2>${escapeHtml(q.question)}</h2><div class="choices">${opts.map((o,i)=>`<button class="choice ${s.selected===i?'selected':''} ${s.checked&&i===correct?'correct':''} ${s.checked&&s.selected===i&&i!==correct?'wrong':''}" ${s.checked?'disabled':''} onclick="selectAnswer('${kind}',${i})"><span class="letter">${kind==='terms'?i+1:o}</span><span>${kind==='terms'?escapeHtml(o):o}</span></button>`).join('')}</div><div class="feedback ${s.checked?'show':''}" aria-live="polite">${s.checked?`<strong>${s.selected===correct?'정답입니다! 🎉':'아쉬워요! 오답입니다.'}</strong>${s.selected!==correct?`<p>내가 선택한 답: ${escapeHtml(opts[s.selected])}</p>`:''}<p class="answer">정답: ${kind==='terms'?(correct+1)+'번 — ':''}${escapeHtml(opts[correct])}</p><p class="reason">해설: ${escapeHtml(q.explanation)}</p>${kind==='terms'?`<div class="option-details"><b>선택지별 설명</b>${opts.map((opt,i)=>`<p><strong>${i+1}번.</strong> ${escapeHtml(q.optionExplanations[i])}</p>`).join('')}</div>`:''}`:''}</div><div class="actions"><button class="btn secondary" onclick="finishQuiz('${kind}')">퀴즈 마치기</button>${!s.checked?`<button class="btn primary" ${s.selected===null?'disabled':''} onclick="checkAnswer('${kind}')">정답 확인</button>`:`<button class="btn primary" onclick="nextQuestion('${kind}')">${s.index===questions.length-1?'결과 보기':'다음 문제 →'}</button>`}</div></div>`;
+}
+function selectAnswer(kind,i){if(quizState[kind].checked)return;quizState[kind].selected=i;renderQuiz(kind)}
+function checkAnswer(kind){
+ const s=quizState[kind];if(s.selected===null||s.checked)return;
+ const q=getQuestions(kind)[s.index],correct=kind==='terms'?q.answer:(q.answer?0:1),opts=kind==='terms'?q.options:['O','X'];
+ s.history.push({question:q.question,myAnswer:(kind==='terms'?(s.selected+1)+'번 — ':'')+opts[s.selected],rightAnswer:(kind==='terms'?(correct+1)+'번 — ':'')+opts[correct],correct:s.selected===correct,explanation:q.explanation});
+ s.checked=true;renderQuiz(kind);
+}
+function nextQuestion(kind){const s=quizState[kind];if(!s.checked)return;s.index++;s.selected=null;s.checked=false;if(s.index>=getQuestions(kind).length)s.finished=true;renderQuiz(kind)}
+function finishQuiz(kind){quizState[kind].finished=true;renderQuiz(kind)}
+function restartQuiz(kind){quizOrders[kind]=shuffledQuestions(kind==='terms'?termQuestions:oxQuestions);quizState[kind]={index:0,selected:null,checked:false,history:[],finished:false};renderQuiz(kind)}
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false')});document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');btn.setAttribute('aria-selected','true');document.getElementById(btn.dataset.tab).classList.add('active')}));
+renderQuiz('terms');renderQuiz('ox');
+</script>
+</body></html>
