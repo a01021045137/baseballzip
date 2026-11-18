@@ -16,6 +16,14 @@
 .profile-value{font-size:14px;line-height:1.55;font-weight:650;overflow-wrap:anywhere;white-space:pre-line}
 .profile-item:nth-last-child(-n+2){grid-column:span 2}
 @media(max-width:480px){.profile-grid{grid-template-columns:1fr}.profile-item:nth-last-child(-n+2){grid-column:span 1}.answer-heading{padding:17px}.profile-grid{padding:12px}}
+
+.answer-input{width:100%;font:inherit;font-size:17px;padding:15px;border:1px solid #cbd9e6;border-radius:12px;margin:12px 0;outline-color:var(--blue)}
+.input-label{display:block;margin-top:18px;font-weight:700;color:#526b86}
+.lyric{white-space:pre-wrap;line-height:2.1;text-align:left;overflow-wrap:anywhere;font-size:17px}
+.blank{display:inline-block;min-width:75px;height:1.2em;border-bottom:2px solid #3478d4;vertical-align:baseline;margin:0 3px}
+.filled{color:#1664b0;font-weight:800}
+.answer-full{padding:20px}.answer-full .lyric{margin:12px 0 0}
+#options:not(.grid){display:block}
 </style></head><body><header><a href="index.html"><h1>⚾ 야구ZIP</h1></a><div>선수 퀴즈</div></header><main><div class="crumb" id="crumb">선수 퀴즈 / 팀 선택</div>
 <section class="panel" id="teamScreen"><h2>응원하는 구단을 선택하세요!</h2><p class="muted">원하는 팀 또는 10개 구단 전체 랜덤</p><div class="team-grid" id="teams"></div></section>
 <section class="panel hidden" id="modeScreen"><h2 id="chosenTeam"></h2><p class="muted">도전할 퀴즈를 선택하세요</p><div class="grid"><button onclick="startQuiz('photo')">📸<br><b>프로필 사진 보고<br>선수 이름 맞히기</b></button><button onclick="startQuiz('chant')">🎵<br><b>응원가 빈칸<br>맞히기</b></button></div><button class="wide" onclick="show('teamScreen')">← 팀 다시 선택</button></section>
@@ -24,12 +32,14 @@
 <section class="panel hidden" id="emptyScreen"><h2>문제 데이터가 아직 없어요</h2><p id="emptyMsg" class="muted"></p><p class="muted small">선수 프로필 사진과 응원가 문제를 검증해 data/players.json에 추가하면 자동으로 출제돼요.</p><button class="primary wide" onclick="show('modeScreen')">돌아가기</button></section>
 </main><script>
 const teamNames=['LG 트윈스','한화 이글스','SSG 랜더스','삼성 라이온즈','NC 다이노스','KT 위즈','롯데 자이언츠','KIA 타이거즈','두산 베어스','키움 히어로즈'];
+
+const SONGS = {"LG 트윈스":[{"name":"최원영","raw":"오 LG의 최원영 끝~까지 오 LG의 최원영 <할!수!있!어!> 최!원!영!\n오 LG의 최원영 끝~까지 오 LG의 최원영 <할!수!있!어!> 최!원!영!","answer":"할!수!있!어!","accepted":["할수있어","할 수 있어","할수 있어","할 수있어"]},{"name":"구본혁","raw":"<무적LG> 구본혁 <무적LG> 구본혁 안타를 날려 힘차게 달려 오오오오 LG 구본혁\n<무적LG> 구본혁 <무적LG> 구본혁 안타를 날려 힘차게 달려 오오오오 LG 구본혁","answer":"무적LG","accepted":["무적LG","무적lg","무적엘지","무적엘쥐","무적 LG","무적 lg"]},{"name":"이영빈","raw":"달려라 LG의 이영빈 <날려라> LG의 이영빈 LG의 승리를 위하여 오 이영빈\n달려라 LG의 이영빈 <날려라> LG의 이영빈 LG의 승리를 위하여 오 이영빈","answer":"날려라","accepted":["날려라"]},{"name":"문성주","raw":"무적 LG 오 문성주 <날려버려라~> 무적 LG 오 문성주 <날려버려라~> 랄랄라라 랄랄라라 랄랄랄라라~ (헤이!) 랄랄라라 랄랄라라 랄랄랄라라~ (헤이!)\n무적 LG 오 문성주 <날려버려라~> 무적 LG 오 문성주 <날려버려라~> 랄랄라라 랄랄라라 랄랄랄라라~ (헤이!) 랄랄라라 랄랄라라 랄랄랄라라~ (헤이!)","answer":"날려버려라~","accepted":["날려버려라"]},{"name":"오지환","raw":"<무적LG> 오지환 <무적LG> 오지환 워어어어어어 무 적 L G 오 지 환\n<무적LG> 오지환 <무적LG> 오지환 워어어어어어 무 적 L G 오 지 환","answer":"무적LG","accepted":["무적LG","무적lg","무적엘지","무적엘쥐","무적 LG","무적 lg"]},{"name":"박해민","raw":"날려버려 <안타> 박해민 오오오오오 박해민 무 적 L G 박 해 민\n날려버려 <안타> 박해민 오오오오오 박해민 무 적 L G 박 해 민","answer":"안타","accepted":["안타"]},{"name":"오스틴 딘","raw":"무적LG의 <오스틴 딘> 날려버려라 <오스틴 딘>\n무적LG의 <오스틴 딘> 날려버려라 <오스틴 딘>\n무적LG의 <오스틴 딘> 날려버려라 <오스틴 딘>\n무적LG의 <오스틴 딘> 날려버려라 <오스틴 딘>","answer":"오스틴 딘","accepted":["오스틴 딘","오스틴딘"]},{"name":"박동원","raw":"승리 위해 저 끝까지 날려버려 박동원 홈런 <시원하게> 쏴 쏘아 올려 쏴 무적LG 박동원 안타\n승리 위해 저 끝까지 날려버려 박동원 홈런 <시원하게> 쏴 쏘아 올려 쏴 무적LG 박동원 안타","answer":"시원하게","accepted":["시원하게"]},{"name":"홍창기","raw":"홍창기 안타 안타 날려 홍창기 홍창기 안타 <날려버려라> 홍창기 안타 안타 날려 홍창기 무적 LG의 승리를 위해\n홍창기 안타 안타 날려 홍창기 홍창기 안타 <날려버려라> 홍창기 안타 안타 날려 홍창기 무적 LG의 승리를 위해","answer":"날려버려라","accepted":["날려버려라"]},{"name":"이재원","raw":"잠실의 <빅보이> LG의 이재원 승리를 위하여 날려버려 이재원\n잠실의 <빅보이> LG의 이재원 승리를 위하여 무 적 L G 이 재 원","answer":"빅보이","accepted":["빅보이","빅 보이"]},{"name":"천성호","raw":"LG 천성호! (호!) LG 천성호! (호!) 무적 LG <승리>를 위해! (안!타!천!성!호!)\nLG 천성호! (호!) LG 천성호! (호!) 무적 LG <승리>를 위해! (안!타!천!성!호!)","answer":"승리","accepted":["승리"]},{"name":"송찬의","raw":"LG의 송찬의 LG의 송찬의 무적 LG <승리> 위해 날려버려라\nLG의 송찬의 LG의 송찬의 무적 LG <승리> 위해 날려버려라","answer":"승리","accepted":["승리"]},{"name":"문정빈","raw":"문정빈 힘차게 날아올라봐 LG의 승리 위하여 문정빈 넌 빛나고 있어 문정빈 힘차게 날아올라봐 LG의 승리 위하여 문정빈 <주인공>은 바로 너! 문!정!빈!","answer":"주인공","accepted":["주인공"]},{"name":"김민수","raw":"<안타 안타> LG 김민수 <안타 안타> LG 김민수 <안타 안타> LG 김민수 오 김민수\n<안타 안타> LG 김민수 <안타 안타> LG 김민수 <안타 안타> LG 김민수 오 김민수","answer":"안타 안타","accepted":["안타안타","안타 안타"]},{"name":"이주헌","raw":"트윈스 이주헌 날려버려라 날려버려라 날려버려라 트윈스 이주헌 날려버려라 LG 트윈스의 <주헌이> (안타!)\n트윈스 이주헌 날려버려라 날려버려라 날려버려라 트윈스 이주헌 날려버려라 LG 트윈스의 <주헌이> (안타!)","answer":"주헌이","accepted":["주헌이"]}]};
 let players=[],team='ALL',mode='photo',questions=[],index=0,chosen=-1,checked=false,history=[];
 const el=id=>document.getElementById(id);function show(id){['teamScreen','modeScreen','quizScreen','resultScreen','emptyScreen'].forEach(x=>el(x).classList.toggle('hidden',x!==id));el('crumb').textContent='선수 퀴즈 / '+({teamScreen:'팀 선택',modeScreen:'유형 선택',quizScreen:'문제 풀기',resultScreen:'결과',emptyScreen:'문제 준비 중'}[id]);}
 const shuffle=a=>[...a].sort(()=>Math.random()-.5);
 function chooseTeam(t){team=t;el('chosenTeam').textContent=t==='ALL'?'10개 구단 전체 랜덤':t;show('modeScreen')}
 function getPool(){return players.filter(p=>(team==='ALL'||p.team===team)&&p.name)}
-function makeQuestions(type){let pool=getPool();if(type==='photo')return shuffle(pool.filter(p=>p.photo&&p.photoVerified===true)).map(p=>({player:p,prompt:'사진 속 선수의 이름은?',answer:p.name,photo:p.photo}));return shuffle(pool.flatMap(p=>(p.chants||[]).filter(c=>c.prompt&&c.answer&&c.approved===true).map(c=>({player:p,prompt:c.prompt,answer:c.answer}))));}
+function makeQuestions(type){let pool=getPool();if(type==='photo')return shuffle(pool.filter(p=>p.photo&&p.photoVerified===true)).map(p=>({player:p,prompt:'사진 속 선수의 이름은?',answer:p.name,photo:p.photo}));return shuffle(Object.entries(SONGS).filter(([t])=>team==='ALL'||t===team).flatMap(([t,items])=>items.map(c=>({player:{team:t,name:c.name},prompt:c.raw,answer:c.answer,accepted:c.accepted,chant:true}))));}
 function distractors(q){
   // 전체 랜덤에서도 정답 선수와 동일한 구단의 선수만 보기로 사용
   let candidates;
@@ -42,8 +52,26 @@ function distractors(q){
   if(unique.length<3)return null;
   return shuffle([q.answer,...shuffle(unique).slice(0,3)]);
 }
-function startQuiz(type){mode=type;questions=makeQuestions(type).map(q=>({...q,choices:distractors(q)})).filter(q=>q.choices).slice(0,10);index=0;history=[];if(!questions.length){el('emptyMsg').textContent=(team==='ALL'?'전체 구단':team)+'의 '+(type==='photo'?'검증된 선수 프로필 사진':'사용 가능한 응원가 빈칸')+' 문제가 아직 충분하지 않아요. 객관식 오답 후보도 최소 3개 필요해요.';show('emptyScreen');return;}show('quizScreen');render();}
-function render(){chosen=-1;checked=false;let q=questions[index];el('question').innerHTML='';let h=document.createElement('p');h.className='qtitle';h.textContent=q.prompt;el('question').append(h);if(mode==='photo'){let img=document.createElement('img');img.className='portrait';img.src=q.photo;img.alt='선수 프로필 사진';img.onerror=()=>{img.alt='사진을 불러오지 못했습니다';img.removeAttribute('src')};el('question').append(img)}else{let box=document.createElement('div');box.className='lyric';box.textContent=q.prompt;el('question').replaceChildren(box)}el('options').replaceChildren();q.choices.forEach((a,i)=>{let b=document.createElement('button');const opt=players.find(p=>p.name===a&&p.team===q.player.team);b.innerHTML=`<span style="color:#3478d4;font-weight:800">${opt?.number??''}</span> ${a}`;b.onclick=()=>{if(checked)return;chosen=i;[...el('options').children].forEach((x,j)=>x.classList.toggle('selected',i===j))};el('options').append(b)});el('feedback').classList.add('hidden');el('feedback').style.display='none';el('check').classList.remove('hidden');el('next').classList.add('hidden');}
+function startQuiz(type){mode=type;questions=makeQuestions(type).map(q=>type==='photo'?({...q,choices:distractors(q)}):q).filter(q=>type!=='photo'||q.choices).slice(0,10);index=0;history=[];if(!questions.length){el('emptyMsg').textContent=(team==='ALL'?'전체 구단':team)+'의 '+(type==='photo'?'검증된 선수 프로필 사진':'사용 가능한 응원가 빈칸')+' 문제가 아직 등록되지 않았어요.';show('emptyScreen');return;}show('quizScreen');render();}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function chantMarkup(raw,complete){return escapeHTML(raw).replace(/&lt;([^<>]*?)&gt;/g,(_,a)=>complete?'<strong class="filled">'+a+'</strong>':'<span class="blank" aria-label="빈칸"></span>');}
+function render(){
+ chosen=-1;checked=false;const q=questions[index];
+ el('question').replaceChildren();el('options').replaceChildren();
+ if(mode==='photo'){
+  const h=document.createElement('p');h.className='qtitle';h.textContent=q.prompt;el('question').append(h);
+  const img=document.createElement('img');img.className='portrait';img.src=q.photo;img.alt='선수 프로필 사진';img.onerror=()=>{img.alt='사진을 불러오지 못했습니다';img.removeAttribute('src')};el('question').append(img);
+  q.choices.forEach((a,i)=>{const b=document.createElement('button');const opt=players.find(p=>p.name===a&&p.team===q.player.team);b.innerHTML=`<span style="color:#3478d4;font-weight:800">${escapeHTML(opt?.number??'')}</span> ${escapeHTML(a)}`;b.onclick=()=>{if(checked)return;chosen=i;[...el('options').children].forEach((x,j)=>x.classList.toggle('selected',i===j))};el('options').append(b)});
+  el('options').classList.add('grid');
+ }else{
+  const h=document.createElement('p');h.className='qtitle';h.textContent=q.player.name+' 응원가 빈칸 맞히기';el('question').append(h);
+  const song=document.createElement('div');song.className='lyric';song.innerHTML=chantMarkup(q.prompt,false);el('question').append(song);
+  const label=document.createElement('label');label.htmlFor='chantInput';label.className='input-label';label.textContent='빈칸에 들어갈 가사를 입력하세요';
+  const input=document.createElement('input');input.id='chantInput';input.className='answer-input';input.type='text';input.autocomplete='off';input.placeholder='정답을 입력하세요';input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!checked)checkAnswer()});
+  el('options').classList.remove('grid');el('options').append(label,input);input.focus();
+ }
+ el('feedback').classList.add('hidden');el('feedback').style.display='none';el('check').classList.remove('hidden');el('next').classList.add('hidden');
+}
 function splitBirth(raw){
  const value=String(raw||'').trim();
  if(!value)return {date:'',place:''};
@@ -60,7 +88,30 @@ function infoRow(label,value){
  const val=document.createElement('div');val.className='profile-value';val.textContent=value;
  row.append(key,val);return row;
 }
+function normalizeAnswer(v){return String(v||'').normalize('NFKC').toLowerCase().replace(/[\s~!！.,，。·\-]/g,'');}
+function checkChantAnswer(){
+ if(checked)return;
+ const q=questions[index],input=el('chantInput'),user=input.value.trim();
+ if(!user){alert('정답을 입력해 주세요!');input.focus();return;}
+ checked=true;input.disabled=true;
+ const valid=[q.answer,...(q.accepted||[])];
+ const correct=valid.some(a=>normalizeAnswer(a)===normalizeAnswer(user));
+ history.push({name:q.player.name,answer:q.answer,chosen:user,correct});
+ const box=el('feedback');box.replaceChildren();
+ const heading=document.createElement('div');heading.className='answer-heading';
+ const mark=document.createElement('span');mark.className='answer-mark '+(correct?'is-correct':'is-wrong');mark.textContent=correct?'✓ 정답입니다!':'✕ 오답입니다!';heading.append(mark);
+ const name=document.createElement('div');name.className='answer-name';name.textContent=q.player.name;heading.append(name);
+ const teamLabel=document.createElement('div');teamLabel.className='answer-team';teamLabel.textContent=q.player.team;heading.append(teamLabel);
+ if(!correct){const correction=document.createElement('div');correction.className='answer-correction';correction.textContent='정답: '+q.answer;heading.append(correction)}
+ box.append(heading);
+ const complete=document.createElement('div');complete.className='answer-full';
+ const label=document.createElement('strong');label.textContent='🎵 응원가 완성본';complete.append(label);
+ const lyric=document.createElement('div');lyric.className='lyric';lyric.innerHTML=chantMarkup(q.prompt,true);complete.append(lyric);box.append(complete);
+ box.classList.remove('hidden');box.style.display='block';box.scrollIntoView({behavior:'smooth',block:'nearest'});
+ el('check').classList.add('hidden');el('next').classList.remove('hidden');el('next').textContent=index===questions.length-1?'결과 보기 →':'다음 문제 →';
+}
 function checkAnswer(){
+ if(mode==='chant')return checkChantAnswer();
  if(chosen<0){alert('답을 선택해 주세요!');return;}
  if(checked)return;
  checked=true;
